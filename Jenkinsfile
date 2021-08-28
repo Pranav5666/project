@@ -23,7 +23,7 @@ node {
        stage('Deploy') {
          def dockerRun = 'docker run -p 85:80 -d --name project pranav744/test'
          sshagent(['prod-server']) {
-           sh "ssh =o StrictHostKeyChecking=no root@172.31.33.246 $(dockerRun)"
+               sh "ssh =o StrictHostKeyChecking=no root@172.31.33.246 ${dockerRun}"
          }
     
         }
