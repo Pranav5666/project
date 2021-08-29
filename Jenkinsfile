@@ -6,7 +6,7 @@ node {
       }     
       stage('Build image') {         
        
-            app = docker.build("pranav744/test")    
+            app = docker.build("pranav744/test:1.1")    
        }     
       stage('Test image') {           
             app.inside {            
@@ -21,7 +21,7 @@ node {
               }    
            }
        stage('Deploy') {
-         def dockerRun = 'docker run -p 85:80 -d --name project pranav744/test'
+         def dockerRun = 'docker run -p 85:80 -d --name project pranav744/test:1.1'
          sshagent(['prod-server']) {
                sh "ssh =o StrictHostKeyChecking=no root@172.31.33.246 ${dockerRun}"
          }
